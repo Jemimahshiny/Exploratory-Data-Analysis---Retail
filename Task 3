@@ -1,0 +1,37 @@
+# Importing the required libraries
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# Loading the dataset
+url = "https://bit.ly/3i4rbWl"
+df = pd.read_csv(url)
+
+# Displaying the first few rows of the dataset
+print(df.head())
+
+# Checking the shape of the dataset
+print("Shape of the dataset:", df.shape)
+
+# Checking the statistical summary of the dataset
+print(df.describe())
+
+# Checking the missing values in the dataset
+print(df.isnull().sum())
+
+# Checking the data types of the columns
+print(df.dtypes)
+
+# Exploring the correlation between the variables
+corr = df.corr()
+sns.heatmap(corr, annot=True, cmap="YlGnBu")
+plt.show()
+
+# Exploring the distribution of the target variable
+sns.displot(df["Profit"], kde=False)
+plt.show()
+
+# Exploring the distribution of the other variables
+sns.pairplot(df, hue="Region")
+plt.show() 
